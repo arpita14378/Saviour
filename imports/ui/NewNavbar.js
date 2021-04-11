@@ -21,6 +21,7 @@ import Expenses from './components/Expenses';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import SaveIcon from '@material-ui/icons/Save';
+import UserProfile from './components/UserProfile';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,43 +40,11 @@ const useStyles = makeStyles((theme) => ({
             display: 'block',
         },
     },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
+    appbarroot: {
+        boxShadow: "none",
+        backgroundColor: "#cccccc" 
+      } ,
+   
     sectionDesktop: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
@@ -177,16 +146,9 @@ export default function NewNavbar() {
     return (
         <div>
             <div className={classes.grow}>
-                <AppBar position="static">
+                <AppBar className={classes.appbarroot}  position="static">
                     <Toolbar>
-                        <IconButton
-                            edge="start"
-                            className={classes.menuButton}
-                            color="inherit"
-                            aria-label="open drawer"
-                        >
-                            <MenuIcon />
-                        </IconButton>
+                      
                         <Typography className={classes.title} variant="h6" noWrap>
                             <Button onClick={() => { setBtnNum(1) }}>Home</Button>
                         </Typography>
@@ -200,25 +162,15 @@ export default function NewNavbar() {
                             <Button onClick={() => { setBtnNum(3) }}>App Store</Button>
                         </Typography>
 
+                        <Typography className={classes.title} variant="h6" noWrap>
+                            <Button onClick={() => { setBtnNum(4) }}>UserProfile</Button>
+                        </Typography>
+                       
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
 
-                            <IconButton aria-label="show 17 new notifications" color="inherit">
-                                <Badge badgeContent={17} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-
-                            </IconButton>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
+                          
+                         
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -244,6 +196,7 @@ export default function NewNavbar() {
             {btnNum === 1 ? <Home /> : ""}
             {btnNum === 2 ? <Expenses /> : ""}
             {btnNum === 3 ? <AppStore /> : ""}
+            {btnNum === 4 ? <UserProfile /> : ""}
 
         </div>
     );
