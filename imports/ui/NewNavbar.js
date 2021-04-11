@@ -24,6 +24,8 @@ import SaveIcon from '@material-ui/icons/Save';
 import UserProfile from './components/UserProfile';
 
 
+
+
 const useStyles = makeStyles((theme) => ({
     grow: {
         flexGrow: 1,
@@ -42,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
     },
     appbarroot: {
         boxShadow: "none",
-        backgroundColor: "#cccccc" 
+        backgroundColor: "#000000" 
+        
       } ,
    
     sectionDesktop: {
@@ -58,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-
 export default function NewNavbar() {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -150,20 +152,37 @@ export default function NewNavbar() {
                     <Toolbar>
                       
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button onClick={() => { setBtnNum(1) }}>Home</Button>
+                            <Button 
+                             variant="contained"
+                             color="primary"
+                             className={classes.button}
+                            //  startIcon={<DeleteIcon />}
+                            onClick={() => { setBtnNum(1) }}>Home</Button>
                         </Typography>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button onClick={() => {
+                            <Button 
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            onClick={() => {
                                 console.log("Meteor login id", Meteor.userId())
                                 setBtnNum(2)
                             }}>Expenses</Button>
                         </Typography>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button onClick={() => { setBtnNum(3) }}>App Store</Button>
+                            <Button 
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            onClick={() => { setBtnNum(3) }}>App Store</Button>
                         </Typography>
 
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button onClick={() => { setBtnNum(4) }}>UserProfile</Button>
+                            <Button 
+                            variant="contained"
+                            color="primarys"
+                            size="large"
+                            onClick={() => { setBtnNum(4) }}>UserProfile</Button>
                         </Typography>
                        
                         <div className={classes.grow} />

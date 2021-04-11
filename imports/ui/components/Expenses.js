@@ -84,7 +84,7 @@ export default function Expenses() {
       </AppBar>
       <TabPanel value={value} index={0}>
         <NewExp/>
-      </TabPanel>
+      </TabPanel  >
       <TabPanel value={value} index={1}>
         Item Two
       </TabPanel>

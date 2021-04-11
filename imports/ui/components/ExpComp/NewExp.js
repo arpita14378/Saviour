@@ -5,7 +5,7 @@ import AddExpense from './AddExpense';
 export default function NewExp() {
     return (
         <div>
-            <h1>New Expenses<DeleteIcon /></h1>
+            <h1>New Expenses</h1>
             <AddExpense/>
         </div>
     )

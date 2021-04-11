@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Card from '@material-ui/core/Card';
 import { Button, Grid } from '@material-ui/core';
+import { ExpenseCollection } from '../../../api/links';
 const curretdate = () => {
   var tempDate = new Date();
   var date = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate();
@@ -49,12 +50,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddExpense() {
   const classes = useStyles();
-  const [currency, setCurrency] = React.useState('EUR');
+  const [currency, setCurrency] = React.useState('INR');
 
   const [datevar, setDatevar] = useState('')
   const [spent, setSpent] = useState('spent where')
   const [amount, setAmount] = useState(0.0)
-
+  
 
 
   return (
@@ -66,6 +67,7 @@ export default function AddExpense() {
     >
       <Card className={classes.root}>
         <form className={classes.root} noValidate autoComplete="off">
+          <br/>
           <div>
             <TextField
               id="spend-where"
@@ -121,19 +123,23 @@ export default function AddExpense() {
             />
 
           </div>
-
+            <br/>
         </form>
         <Grid
           container
           direction="row"
           justify="center"
           alignItems="center"
-        >   <Button variant="contained" color="primary" onClick={() => {
+        >   
+        <Button variant="contained" id="ddd" color="primary" onClick={() => {
           console.log("following list of data for db insert")
           console.log("Spent::  ", spent, " currency:: ", currency, " Amount:: ", amount, "  date:: ", datevar  , " userId ",Meteor.userId())
-        }}>Submit</Button>
+          ExpenseCollection.insert({
+            spent,currency,amount,"date":datevar,userId:Meteor.userId()
+          })
+      }}>Submit</Button>
         </Grid>
-
+        <br/>
       </Card>
     </Grid>
   );
