@@ -4,18 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import HelpIcon from '@material-ui/icons/Help';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import ThumbDown from '@material-ui/icons/ThumbDown';
-import ThumbUp from '@material-ui/icons/ThumbUp';
+import AddIcon from '@material-ui/icons/Add';
+import HistoryIcon from '@material-ui/icons/History';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import NewExp from './ExpComp/NewExp';
 import ExpenseHistory from './ExpComp/ExpenseHistory';
-
+import Barchart from './graph/Barchart'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -77,9 +73,9 @@ export default function Expenses() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="New Expenses" icon={<PhoneIcon />} {...a11yProps(0)} />
-          <Tab label="Expense History" icon={<FavoriteIcon />} {...a11yProps(1)} />
-          <Tab label="Graphs" icon={<PersonPinIcon />} {...a11yProps(2)} />
+          <Tab label="New Expenses" icon={<AddIcon />} {...a11yProps(0)} />
+          <Tab label="Expense History" icon={< HistoryIcon/>} {...a11yProps(1)} />
+          <Tab label="Graphs" icon={< EqualizerIcon/>} {...a11yProps(2)} />
         
         </Tabs>
       </AppBar>
@@ -90,7 +86,7 @@ export default function Expenses() {
         <ExpenseHistory/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Barchart/>
       </TabPanel>
      
     </div>

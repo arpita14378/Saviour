@@ -14,16 +14,17 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import HomeIcon from '@material-ui/icons/Home';
 import { Button } from '@material-ui/core';
 import Home from './components/Home';
 import AppStore from './components/AppStore';
 import Expenses from './components/Expenses';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SaveIcon from '@material-ui/icons/Save';
 import UserProfile from './components/UserProfile';
-
-
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,10 +45,10 @@ const useStyles = makeStyles((theme) => ({
     },
     appbarroot: {
         boxShadow: "none",
-        backgroundColor: "#000000" 
-        
-      } ,
-   
+        backgroundColor: "#000000"
+
+    },
+
     sectionDesktop: {
         display: 'none',
         [theme.breakpoints.up('md')]: {
@@ -148,48 +149,54 @@ export default function NewNavbar() {
     return (
         <div>
             <div className={classes.grow}>
-                <AppBar className={classes.appbarroot}  position="static">
+                <AppBar className={classes.appbarroot} position="static">
                     <Toolbar>
-                      
+                        <h2>SAViour</h2>
+                        
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button 
-                             variant="contained"
-                             color="primary"
-                             className={classes.button}
-                            //  startIcon={<DeleteIcon />}
-                            onClick={() => { setBtnNum(1) }}>Home</Button>
+                            <Button
+
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                startIcon={<HomeIcon />}
+                                onClick={() => { setBtnNum(1) }}>Home</Button>
                         </Typography>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button 
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            onClick={() => {
-                                console.log("Meteor login id", Meteor.userId())
-                                setBtnNum(2)
-                            }}>Expenses</Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                startIcon={<AttachMoneyIcon />}
+                                onClick={() => {
+                                    console.log("Meteor login id", Meteor.userId())
+                                    setBtnNum(2)
+                                }}>Expenses</Button>
                         </Typography>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button 
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            onClick={() => { setBtnNum(3) }}>App Store</Button>
+                            <Button
+
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                startIcon={<StorefrontIcon />}
+                                onClick={() => { setBtnNum(3) }}>App Store</Button>
                         </Typography>
 
                         <Typography className={classes.title} variant="h6" noWrap>
-                            <Button 
-                            variant="contained"
-                            color="primarys"
-                            size="large"
-                            onClick={() => { setBtnNum(4) }}>UserProfile</Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                startIcon={<PermContactCalendarIcon />}
+                                onClick={() => { setBtnNum(4) }}>UserProfile</Button>
                         </Typography>
-                       
+
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>
 
-                          
-                         
+
+
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -203,15 +210,15 @@ export default function NewNavbar() {
                             >
                                 Logout
       </Button>
-                           
+
                         </div>
-                       
+
                     </Toolbar>
                 </AppBar>
                 {renderMobileMenu}
                 {renderMenu}
             </div>
-            
+
             {btnNum === 1 ? <Home /> : ""}
             {btnNum === 2 ? <Expenses /> : ""}
             {btnNum === 3 ? <AppStore /> : ""}

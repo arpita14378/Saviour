@@ -74,6 +74,7 @@ export default function AddNewProfile() {
         <form className={classes.root} noValidate autoComplete="off">
           <br/>
           <div>
+            <h2 align="center">Add New Profile</h2>
             <TextField
               id="First Name"
               label="First Name"

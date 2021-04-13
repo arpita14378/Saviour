@@ -4,13 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import HelpIcon from '@material-ui/icons/Help';
-import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import ThumbDown from '@material-ui/icons/ThumbDown';
-import ThumbUp from '@material-ui/icons/ThumbUp';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import PersonIcon from '@material-ui/icons/Person';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddNewProfile from './AddNewProfile';
@@ -76,9 +72,9 @@ export default function UserProfile() {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="Add New Profile" icon={<PhoneIcon />} {...a11yProps(0)} />
-          <Tab label="Profile" icon={<FavoriteIcon />} {...a11yProps(1)} />
-          <Tab label="My Account" icon={<PersonPinIcon />} {...a11yProps(2)} />
+          <Tab label="Add New Profile" icon={<PersonAddIcon />} {...a11yProps(0)} />
+          <Tab label="Profile" icon={<PersonIcon />} {...a11yProps(1)} />
+          <Tab label="My Account" icon={<AttachMoneyIcon />} {...a11yProps(2)} />
         
         </Tabs>
       </AppBar>

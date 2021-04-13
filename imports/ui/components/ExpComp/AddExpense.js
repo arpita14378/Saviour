@@ -32,6 +32,28 @@ const currencies = [
     label: '₹',
   },
 ];
+const Spentwhere = [
+  {
+    value: 'Food',
+    label: 'Food',
+  },
+  {
+    value: 'Household',
+    label: 'Household',
+  },
+  {
+    value: 'Clothes',
+    label: 'Clothes',
+  },
+  {
+    value: 'Essentials',
+    label: 'Essentials',
+  },
+  {
+    value: 'Others',
+    label: 'Others',
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,10 +72,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddExpense() {
   const classes = useStyles();
-  const [currency, setCurrency] = React.useState('INR');
+  const [currency, setCurrency] = useState('INR');
 
-  const [datevar, setDatevar] = useState('')
-  const [spent, setSpent] = useState('spent where')
+  const [datevar, setDatevar] = useState('DD/mm/yyyy')
+  const [spent, setSpent] = useState('')
   const [amount, setAmount] = useState(0.0)
   
 
@@ -69,16 +91,24 @@ export default function AddExpense() {
         <form className={classes.root} noValidate autoComplete="off">
           <br/>
           <div>
-            <TextField
-              id="spend-where"
+            <h2 align="center">New Expense</h2>
+           
+             <TextField
+              id="Spent Where"
+              select
               label="Spent Where"
-              multiline
-              rowsMax={4}
               value={spent}
               onChange={(e) => {
                 setSpent(e.target.value)
               }}
-            />
+              helperText="Please select where did you spent"
+            >
+              {Spentwhere.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
             <br />
             <TextField
               id="standard-select-currency"
@@ -137,6 +167,10 @@ export default function AddExpense() {
           ExpenseCollection.insert({
             spent,currency,amount,"date":datevar,userId:Meteor.userId()
           })
+          setSpent('')
+          setCurrency('')
+          setAmount(0.0)
+          setDatevar("DD/mm/yyyy")
       }}>Submit</Button>
         </Grid>
         <br/>
