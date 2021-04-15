@@ -5,23 +5,23 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import {useHistory} from 'react-router-dom';
+ import { Link } from 'react-router';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      
        Arpita  Your Website
-      </Link>{' '}
+      
       {new Date().getFullYear()}
-      {'.'}
+      
     </Typography>
   );
 }
@@ -48,29 +48,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login(props) {
   const classes = useStyles();
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const history = useHistory();
+  const [isLogin,setIsLogin]=useState(false)
   return (
-    <Container component="main" maxWidth="xs">
+   
+   <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-       
+        {isLogin?<h1>LoggedIn</h1>:<h2>Not Loggedin</h2>}
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <form className={classes.form} noValidate>
+        
+       
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="username"
-            label="username"
-            name="username"
-            autoComplete="username"
+            id="email"
+            label="email"
+            name="email"
+            autoComplete="email"
             autoFocus
             onChange={(e)=>{
-                setUsername(e.target.value)
+                setEmail(e.target.value)
             }}
           />
           <TextField
@@ -96,12 +100,14 @@ export default function Login(props) {
             variant="contained"
             color="primary"
             onClick={()=>{
-              console.log("Register function ")
-                Meteor.loginWithPassword(username, password, function(error) {
+                Meteor.loginWithPassword(email, password, function(error) {
                     if (error) {
                       console.log("There was an error:" + error.reason);
                     } else {
-                      console.log("Logged in")
+                      props.setIsLoggedIn(true)
+                      // setIsLogin(true)
+                      // console.log("Logged in")
+                      // history.push('/navbar')
                     }
                   })
               
@@ -120,17 +126,8 @@ export default function Login(props) {
             variant="contained"
             color="secondary"
            onClick={()=>{
-            Accounts.createUser({
-                username,
-                password,
-              });
-              Meteor.loginWithPassword(username, password, function(error) {
-                if (error) {
-                  console.log("There was an error:" + error.reason);
-                } else {
-                  console.log("Logged in")
-                }
-              })
+            props.setCompType('register')
+            
            }}
           >
             Register
@@ -139,7 +136,7 @@ export default function Login(props) {
           </Grid>
          
          
-        </form>
+
       </div>
       <Box mt={8}>
         <Copyright />

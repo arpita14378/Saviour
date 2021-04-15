@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Accounts } from 'meteor/accounts-base';
+import { ProfileCollection } from '../../api/links';
+import {useHistory} from 'react-router-dom';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -45,21 +47,73 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Register(props) {
+export default function RegisterForm(props) {
   const classes = useStyles();
   const [email,setEmail]=useState('')
   const [firstname,setFirstname]=useState('')
   const [lastname,setLastname]=useState('')
   const [password,setPassword]=useState('')
+  const [userId,setUserId]=useState('')
+  const [occupation,setOccupationd]=useState('')
+  const [datevar,setDatevar] = useState()
+  const curretdate = () => {
+    var tempDate = new Date();
+    var date = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate();
+    return date
+  }
+  const history = useHistory();
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
        
         <Typography component="h1" variant="h5">
-            Register
+            Register User
         </Typography>
         <form className={classes.form} noValidate>
+        <TextField
+              id="First Name"
+              label="First Name"
+              multiline
+              rowsMax={4}
+              value={firstname}
+              onChange={(e) => {
+                setFirstname(e.target.value)
+              }}
+            />
+            <br />
+          
+            <TextField
+              id="Last Name"
+              label="Last Name"
+              multiline
+              rowsMax={4}
+              value={lastname}
+              onChange={(e) => {
+                setLastname(e.target.value)
+              }}
+            />
+            <br />
+            
+           
+            <TextField
+              id="date"
+              label="Date of Birth"
+              type="date"
+              defaultValue={curretdate}
+              className={classes.textField}
+              onChange={(e) => {
+                console.log("Selected Date ==> ", e.target.value)
+                setDatevar(e.target.value)
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+             <br />
+          
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -91,6 +145,34 @@ export default function Register(props) {
             }}
             autoComplete="current-password"
           />
+            <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="userid"
+            label="userId"
+            type="text"
+            id="userId"
+            value={userId}
+            onChange={(e)=>{
+                setUserId(e.target.value)
+            }}
+          />
+           <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="occupation"
+            label="occupation"
+            type="text"
+            id="occupation"
+            value={occupation}
+            onChange={(e)=>{
+                setOccupationd(e.target.value)
+            }}
+          />
          
          <Button
             fullWidth
@@ -105,10 +187,21 @@ export default function Register(props) {
                     "email",email,
                                         "password",password
                 )
-                Accounts.createUser({
-                    email,
-                    password
+               
+                  Accounts.createUser({email, password}, function(err) {
+                  if (err){
+                    console.log(err);
+                  }
+                    else
+                     { console.log('success!');
+                      ProfileCollection.insert({
+                        "FirstName::  ":firstname," LastName:: ":lastname,"date":datevar,"Occupation":occupation,   "userId":Meteor.userId()
+                      })
+                      props.setCompType('login')
+                    }
+                     
                   });
+                 
             }}
           >
             Register

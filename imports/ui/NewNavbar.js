@@ -25,7 +25,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import UserProfile from './components/UserProfile';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -62,8 +62,9 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
-export default function NewNavbar() {
+export default function NewNavbar(props) {
     const classes = useStyles();
+    const history = useHistory();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [btnNum, setBtnNum] = useState(1)
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -203,8 +204,8 @@ export default function NewNavbar() {
                                 size="large"
                                 className={classes.button}
                                 onClick={() => {
-                                    console.log("ddd")
                                     Meteor.logout()
+                                    props.setIsLoggedIn(false)
                                 }}
                                 startIcon={<ExitToAppIcon />}
                             >
