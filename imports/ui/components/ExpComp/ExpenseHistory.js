@@ -7,7 +7,7 @@ export default function ExpenseHistory() {
 
 
     const expenses = useTracker(() => {
-        return ExpenseCollection.find().fetch();
+        return ExpenseCollection.find({"userId":Meteor.userId()}).fetch();
     });
     const columns = ["date","spent", "amount"];
 

@@ -17,7 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeIcon from '@material-ui/icons/Home';
 import { Button } from '@material-ui/core';
 import Home from './components/Home';
-import AppStore from './components/AppStore';
+// import AppStore from './components/AppStore';
 import Expenses from './components/Expenses';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -25,7 +25,6 @@ import SaveIcon from '@material-ui/icons/Save';
 import UserProfile from './components/UserProfile';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -64,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function NewNavbar(props) {
     const classes = useStyles();
-    const history = useHistory();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [btnNum, setBtnNum] = useState(1)
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -222,7 +220,7 @@ export default function NewNavbar(props) {
 
             {btnNum === 1 ? <Home /> : ""}
             {btnNum === 2 ? <Expenses /> : ""}
-            {btnNum === 3 ? <AppStore /> : ""}
+            {/* {btnNum === 3 ? <AppStore /> : ""} */}
             {btnNum === 4 ? <UserProfile /> : ""}
 
         </div>

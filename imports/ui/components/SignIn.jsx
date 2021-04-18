@@ -18,7 +18,6 @@ const SignIn = (props) => {
 
     const handleLogin = () => {
         login();
-        props.history.push('/AppStore');
     }
 
     return (

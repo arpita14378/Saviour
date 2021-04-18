@@ -10,6 +10,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddNewProfile from './AddNewProfile';
+import MyAccount from './MyAccount';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -85,7 +86,7 @@ export default function UserProfile() {
         Profile
       </TabPanel>
       <TabPanel value={value} index={2}>
-       My Accounts
+       <MyAccount/>
       </TabPanel>
      
     </div>

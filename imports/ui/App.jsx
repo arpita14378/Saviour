@@ -3,7 +3,6 @@ import React from 'react'
 import NewNavbar from './NewNavbar'
 import Login from './components/Login'
 import RegisterForm from './components/RegisterForm'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import LoginController from './LoginController'
 
 export const  App=() =>{

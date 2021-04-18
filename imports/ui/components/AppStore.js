@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-const AppStore = () => {
+function AppStore() {
     return (
         <div>
-            AppStore
+            
         </div>
-    );
-};
+    )
+}
 
-export default AppStore;
+export default AppStore
