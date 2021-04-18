@@ -74,7 +74,7 @@ export default function AddExpense() {
   const classes = useStyles();
   const [currency, setCurrency] = useState('INR');
 
-  const [datevar, setDatevar] = useState('DD/mm/yyyy')
+  const [datevar, setDatevar] = useState('dd/mm/yyyy')
   const [spent, setSpent] = useState('')
   const [amount, setAmount] = useState(0.0)
   
@@ -168,9 +168,8 @@ export default function AddExpense() {
             spent,currency,amount,"date":datevar,userId:Meteor.userId()
           })
           setSpent('')
-          setCurrency('')
           setAmount(0.0)
-          setDatevar("DD/mm/yyyy")
+          setDatevar("dd/mm/yyyy")
       }}>Submit</Button>
         </Grid>
         <br/>

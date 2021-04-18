@@ -50,7 +50,6 @@ export default function RegisterForm(props) {
     var date = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate();
     return date
   }
-  const history = useHistory();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -191,7 +190,7 @@ export default function RegisterForm(props) {
                 else {
                   console.log('success!');
                   ProfileCollection.insert({
-                    "FirstName::  ": firstname, " LastName:: ": lastname, "date": datevar, "Occupation": occupation, "userId": Meteor.userId()
+                    "FirstName": firstname, "LastName": lastname, "Date": datevar, "Occupation": occupation, "userId": Meteor.userId()
                   })
                   props.setCompType('login')
                 }
