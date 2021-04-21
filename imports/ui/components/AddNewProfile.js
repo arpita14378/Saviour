@@ -53,8 +53,8 @@ export default function AddNewProfile() {
   const classes = useStyles();
   
   const [datevar, setDatevar] = useState('')
-  const [FN, setFN] = useState('')
-  const [LN, setLN] = useState('')
+  const [SW, setSW] = useState('')
+  const [GN, setGN] = useState('')
   const [Occ, setOcc] = useState('')
   const [currency, setCurrency] = React.useState('INR');
   const [Scurrency, setSCurrency] = React.useState('INR');
@@ -76,54 +76,40 @@ export default function AddNewProfile() {
           <div>
             <h2 align="center">Add New Profile</h2>
             <TextField
-              id="First Name"
-              label="First Name"
+              id="Share with"
+              label="Share with"
               multiline
               rowsMax={4}
-              value={FN}
+              value={SW}
               onChange={(e) => {
-                setFN(e.target.value)
+                setSW(e.target.value)
               }}
             />
             <br />
           
             <TextField
-              id="Last Name"
-              label="Last Name"
+              id="Group Name"
+              label="Group Name"
               multiline
               rowsMax={4}
-              value={Occ}
+              value={GN}
               onChange={(e) => {
-                setOcc(e.target.value)
+                setGN(e.target.value)
               }}
             />
             <br />
             
            
-            <TextField
-              id="date"
-              label="Date of Birth"
-              type="date"
-              defaultValue={curretdate}
-              className={classes.textField}
-              onChange={(e) => {
-                console.log("Selected Date ==> ", e.target.value)
-                setDatevar(e.target.value)
-              }}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-             <br />
+            
           
           <TextField
             id="Occupation"
             label="Occupation"
             multiline
             rowsMax={4}
-            value={LN}
+            value={Occ}
             onChange={(e) => {
-              setLN(e.target.value)
+              setOcc(e.target.value)
             }}
           />
           <br />
@@ -194,10 +180,10 @@ export default function AddNewProfile() {
         >   
         <Button variant="contained" color="primary" onClick={() => {
           console.log("following list of data for db insert")
-          console.log("FirstName::  ", FN, " LastName:: ", LN, "date:: ", datevar,"Occupation::",Occ," currency:: ", currency, " Income:: ", Income," currency:: ", currency, " Saving Limit:: ", Saving, " userId ",Meteor.userId())
+           console.log("shareWith: ",SW," groupName:" ,GN,"Occupation:",Occ,"currency:",currency, "Income:",Income, "saving_currency:" ,Scurrency, Saving," userId:",Meteor.userId())
          
           ProfileCollection.insert({
-            "FirstName::  ":FN," LastName:: ":LN,"date":datevar,"Occupation":Occ,currency,  Income," saving_currency": Scurrency, Saving, "userId":Meteor.userId()
+            "shareWith":SW," groupName":GN,"date":datevar,"Occupation":Occ,currency,  Income," saving_currency": Scurrency, Saving, "userId":Meteor.userId()
           })
       }}>Submit</Button>
         </Grid>
