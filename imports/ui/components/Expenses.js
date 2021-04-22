@@ -11,7 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import NewExp from './ExpComp/NewExp';
 import ExpenseHistory from './ExpComp/ExpenseHistory';
-import DoughnutChart from './graph/DoughnutChart';
+//import DoughnutChart from './graph/DoughnutChart';
+import PieChartView from './graph/PieChartView' 
 // import Barchart from './graph/Barchart'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -88,7 +89,8 @@ export default function Expenses() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         {/* <Barchart/> */}
-       <DoughnutChart/>
+       {/* <DoughnutChart/> */}
+       <PieChartView/>
       </TabPanel>
      
     </div>

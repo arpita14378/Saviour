@@ -133,7 +133,8 @@ export default function AddExpense() {
               rowsMax={4}
               value={amount}
               onChange={(e) => {
-                setAmount(e.target.value)
+                
+                setAmount(Number(e.target.value))
               }}
             />
             <br></br>
