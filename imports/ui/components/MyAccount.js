@@ -148,6 +148,8 @@ export default function MyAccount() {
             IncomeCollection.insert({
                currency, Income, " saving_currency": Scurrency, Saving, "userId": Meteor.userId(), "createdAt": createdAt
             })
+            setIncome(0.0)
+            setSaving(0.0)
           }}>Submit</Button>
         </Grid>
         <br />

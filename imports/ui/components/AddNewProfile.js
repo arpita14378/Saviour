@@ -112,62 +112,7 @@ export default function AddNewProfile() {
               setOcc(e.target.value)
             }}
           />
-          <br />
-          <TextField
-              id="standard-select-currency"
-              select
-              label="Currency"
-              value={currency}
-              onChange={(e) => {
-                setCurrency(e.target.value)
-              }}
-              helperText="Please select your currency"
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              id="standard-multiline-flexible"
-              label="Income"
-              multiline
-              rowsMax={4}
-              value={Income}
-              onChange={(e) => {
-                setIncome(e.target.value)
-              }}
-            />
-            <br></br>
-            <TextField
-              id="standard-select-currency"
-              select
-              label="Currency"
-              value={Scurrency}
-              onChange={(e) => {
-                setSCurrency(e.target.value)
-              }}
-              helperText="Please select your currency"
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              id="standard-multiline-flexible"
-              label="Saving Limit"
-              multiline
-              rowsMax={4}
-              value={Saving}
-              onChange={(e) => {
-                setSaving(e.target.value)
-              }}
-              helperText="Please Enter the saving limit"
-            />
-            <br></br>
+          
 
           </div>
             <br/>

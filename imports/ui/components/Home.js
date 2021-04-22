@@ -85,7 +85,7 @@ export default function RecipeReviewCard() {
       <CardContent>
         <h3 align="center"> Welcome to project SAViour!</h3>
         <Typography variant="body2" color="textSecondary" component="p">
-         We would help u manage your expenses by 
+         We would help you manage your expenses by 
          <strong><br/>
            * Showing your expense history <br/>
            * Showing where you are expending most <br/>
