@@ -13,6 +13,10 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router';
 import Card from '@material-ui/core/Card';
+import swal from 'sweetalert';
+
+// import Alert from '@material-ui/lab/Alert';
+
 
 
 
@@ -97,6 +101,7 @@ export default function Login(props) {
           />
           <br />
           <br />
+          
           <Grid container alignContent='center'>
             <Grid item xs>
               <Button
@@ -107,6 +112,11 @@ export default function Login(props) {
                 onClick={() => {
                   Meteor.loginWithPassword(email, password, function (error) {
                     if (error) {
+                     if(error.reason==="Match failed"){
+                       error="email id/password is missing";
+                     }
+                      swal(`The returned value is: ${error}`);
+                     
                       console.log("There was an error:" + error.reason);
                     } else {
                       props.setIsLoggedIn(true)

@@ -10,7 +10,7 @@ function PieChartView() {
     const [labelVar, setLabelVar] = useState([])
    
       useEffect(() => {
-        let  mydata=ExpenseCollection.find().fetch();
+        let  mydata=ExpenseCollection.find({"userId":Meteor.userId()}).fetch();
         let mychart_data={}
         let mylables=[]
         let mydataval=mydata.map((elm) =>{

@@ -172,7 +172,7 @@ export default function NewNavbar(props) {
                                     setBtnNum(2)
                                 }}>Expenses</Button>
                         </Typography>
-                        <Typography className={classes.title} variant="h6" noWrap>
+                        {/* <Typography className={classes.title} variant="h6" noWrap>
                             <Button
 
                                 variant="contained"
@@ -180,7 +180,7 @@ export default function NewNavbar(props) {
                                 className={classes.button}
                                 startIcon={<StorefrontIcon />}
                                 onClick={() => { setBtnNum(3) }}>App Store</Button>
-                        </Typography>
+                        </Typography> */}
 
                         <Typography className={classes.title} variant="h6" noWrap>
                             <Button
@@ -220,7 +220,7 @@ export default function NewNavbar(props) {
 
             {btnNum === 1 ? <Home /> : ""}
             {btnNum === 2 ? <Expenses /> : ""}
-            {/* {btnNum === 3 ? <AppStore /> : ""} */}
+            {/* {btnNum === 3 ? <AppStore /> : ""}  */}
             {btnNum === 4 ? <UserProfile /> : ""}
 
         </div>

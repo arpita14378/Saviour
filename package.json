@@ -24,7 +24,8 @@
     "react-color": "^2.19.3",
     "react-dom": "^16.13.1",
     "react-minimal-pie-chart": "^8.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sweetalert": "^2.1.2"
   },
   "meteor": {
     "mainModule": {
